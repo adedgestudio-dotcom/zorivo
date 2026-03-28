@@ -1,18 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-<circle cx="250" cy="250" r="245" fill="#000000"/>
-<!-- 8-tooth gear — extra thick -->
-<polygon points="169.57,132.97 224.12,110.38 219.61,77.66 280.39,77.66 275.88,110.38 330.43,132.97 350.38,106.65 393.35,149.62 367.03,169.57 389.62,224.12 422.34,219.61 422.34,280.39 389.62,275.88 367.03,330.43 393.35,350.38 350.38,393.35 330.43,367.03 275.88,389.62 280.39,422.34 219.61,422.34 224.12,389.62 169.57,367.03 149.62,393.35 106.65,350.38 132.97,330.43 110.38,275.88 77.66,280.39 77.66,219.61 110.38,224.12 132.97,169.57 106.65,149.62 149.62,106.65"
-fill="none" stroke="#ffffff" stroke-width="32" stroke-linejoin="round"/>
-<!-- Left chevron < -->
-<polyline points="196,205 148,250 196,295"
-fill="none" stroke="#ffffff" stroke-width="34"
-stroke-linecap="round" stroke-linejoin="round"/>
-<!-- Right chevron > -->
-<polyline points="304,205 352,250 304,295"
-fill="none" stroke="#ffffff" stroke-width="34"
-stroke-linecap="round" stroke-linejoin="round"/>
-<!-- Forward slash / -->
-<line x1="226" y1="305" x2="274" y2="195"
-stroke="#ffffff" stroke-width="34" stroke-linecap="round"/>
+  <rect width="500" height="500" fill="#0a0a0f"/>
+  <polygon points="169.57,132.97 224.12,110.38 219.61,77.66 280.39,77.66 275.88,110.38 330.43,132.97 350.38,106.65 393.35,149.62 367.03,169.57 389.62,224.12 422.34,219.61 422.34,280.39 389.62,275.88 367.03,330.43 393.35,350.38 350.38,393.35 330.43,367.03 275.88,389.62 280.39,422.34 219.61,422.34 224.12,389.62 169.57,367.03 149.62,393.35 106.65,350.38 132.97,330.43 110.38,275.88 77.66,280.39 77.66,219.61 110.38,224.12 132.97,169.57 106.65,149.62 149.62,106.65"
+    fill="none" stroke="#b8a4ff" stroke-width="13" stroke-linejoin="round"/>
+  <polyline points="196,205 148,250 196,295" fill="none" stroke="#b8a4ff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="304,205 352,250 304,295" fill="none" stroke="#b8a4ff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="226" y1="305" x2="274" y2="195" stroke="#b8a4ff" stroke-width="15" stroke-linecap="round"/>
 </svg>
