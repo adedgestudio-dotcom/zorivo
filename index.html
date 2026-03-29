@@ -490,6 +490,10 @@
           padding: 14px 16px;
           min-height: 60px;
         }
+        .action-btn.save-btn.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
       }
     </style>
   </head>
@@ -820,30 +824,59 @@
     </div>
 
     <script>
-     function saveContact() {
-  window.location.href = "/api/contact";
-}
+  function saveContact() {
+    const btn = document.getElementById("saveBtn");
+    const label = document.getElementById("saveLabel");
+    const value = document.getElementById("saveValue");
+    const iconDefault = document.getElementById("iconDefault");
+    const iconCheck = document.getElementById("iconCheck");
 
-      function copyText(text, btn) {
-        navigator.clipboard
-          .writeText(text)
-          .then(() => {
-            btn.classList.add("copied");
-            setTimeout(() => btn.classList.remove("copied"), 2000);
-          })
-          .catch(() => {
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.style.position = "fixed";
-            ta.style.opacity = "0";
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand("copy");
-            document.body.removeChild(ta);
-            btn.classList.add("copied");
-            setTimeout(() => btn.classList.remove("copied"), 2000);
-          });
-      }
-    </script>
-  </body>
-</html>
+    // 🚫 prevent double click
+    if (btn.classList.contains("loading")) return;
+
+    // ⏳ loading state
+    btn.classList.add("loading");
+    label.innerText = "Saving...";
+    value.innerText = "Preparing contact...";
+
+    setTimeout(() => {
+      // 🔥 IMPORTANT: opens contact instead of download
+      window.open("/api/contact", "_self");
+
+      // ✅ success state
+      btn.classList.remove("loading");
+      btn.classList.add("saved");
+      label.innerText = "Saved";
+      value.innerText = "Opening Contacts...";
+
+      iconDefault.style.display = "none";
+      iconCheck.style.display = "block";
+    }, 400);
+  }
+
+  // 🔥 AUTO OPEN (for QR usage)
+  if (window.location.hash === "#save") {
+    setTimeout(saveContact, 500);
+  }
+
+  function copyText(text, btn) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        btn.classList.add("copied");
+        setTimeout(() => btn.classList.remove("copied"), 2000);
+      })
+      .catch(() => {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        btn.classList.add("copied");
+        setTimeout(() => btn.classList.remove("copied"), 2000);
+      });
+  }
+</script>
