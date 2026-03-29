@@ -1,0 +1,434 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap");
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --card: #1a1825;
+  --border: #2a2640;
+  --purple: #b8a4ff;
+  --cyan: #47ffe8;
+  --white: #f0f0f0;
+  --muted: #a0a0b0;
+  --dim: #6b6b80;
+  --dark-dim: #4e4868;
+  --icon-bg: #1e1b2e;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  background: var(--bg);
+  color: var(--white);
+  font-family: "DM Mono", monospace;
+  overflow: hidden;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-glow::b riftA {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(30px, 20px);
+  }
+}
+@keyframes driftB {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-20px, 30px);
+  }
+}
+
+.dot-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(184, 164, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 80px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 0 0 1px rgba(184, 164, 255, 0.06),
+    0 40px 100px rgba(0, 0, 0, 0.7), 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: cardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.card::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.top-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--cyan) 100%);
+}
+
+.hero {
+  padding: 32px 28px 24px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(184, 164, 255, 0.08);
+  border: 0.5px solid rgba(184, 164, 255, 0.25);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 16px;
+  animation: cardIn 0.6s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+  animation: blink 1.8s infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.company-name {
+  font-family: "Syne", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  animation: cardIn 0.6s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.company-name span {
+  color: var(--purple);
+}
+
+.tagline {
+  font-size: 9px;
+  color: var(--purple);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  animation: cardIn 0.6s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.divider {
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+  border-radius: 2px;
+  margin: 12px 0;
+  animation: cardIn 0.6s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.person-name {
+  font-family: "Syne", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  animation: cardIn 0.6s 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.person-role {
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  animation: cardIn 0.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.contacts {
+  padding: 18px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--white);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-height: 64px;
+  position: relative;
+  animation: cardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  font-family: "DM Mono", monospace;
+  text-align: left;
+}
+
+.action-btn:nth-child(1) {
+  animation-delay: 0.32s;
+}
+.action-btn:nth-child(2) {
+  animation-delay: 0.38s;
+}
+.action-btn:nth-child(3) {
+  animation-delay: 0.44s;
+}
+.action-btn:nth-child(4) {
+  animation-delay: 0.5s;
+}
+.action-btn:nth-child(5) {
+  animation-delay: 0.56s;
+}
+
+.action-btn:hover {
+  background: rgba(184, 164, 255, 0.06);
+  border-color: rgba(184, 164, 255, 0.3);
+  transform: translateX(3px);
+}
+
+.action-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--icon-bg);
+  border: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.action-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.action-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.action-label {
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.action-value {
+  font-size: 13px;
+  color: var(--white);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action-arrow {
+  flex-shrink: 0;
+  color: var(--dim);
+}
+
+.copy-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--icon-bg);
+  border: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  color: var(--dim);
+  z-index: 10;
+}
+
+.copy-btn:hover {
+  background: rgba(184, 164, 255, 0.1);
+  border-color: rgba(184, 164, 255, 0.4);
+  color: var(--purple);
+}
+
+.copy-btn.copied {
+  background: rgba(71, 255, 232, 0.1);
+  border-color: rgba(71, 255, 232, 0.4);
+  color: var(--cyan);
+}
+
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 9px;
+  color: var(--cyan);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.copy-btn.copied .tooltip {
+  opacity: 1;
+}
+
+.action-btn.has-copy .action-arrow {
+  display: none;
+}
+
+.action-btn.has-copy {
+  padding-right: 54px;
+}
+
+.action-btn.whatsapp:hover {
+  background: rgba(37, 211, 102, 0.06);
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.action-btn.whatsapp .action-icon {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.2);
+}
+
+.action-btn.whatsapp .action-value {
+  color: #25d366;
+}
+
+.action-btn.portfolio:hover {
+  background: rgba(71, 255, 232, 0.06);
+  border-color: rgba(71, 255, 232, 0.3);
+}
+
+.action-btn.portfolio .action-icon {
+  background: rgba(71, 255, 232, 0.08);
+  border-color: rgba(71, 255, 232, 0.2);
+}
+
+.action-btn.portfolio .action-value {
+  color: var(--cyan);
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 9px;
+  color: var(--dark-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  animation: cardIn 0.5s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 24px 20px 20px;
+  }
+  .contacts {
+    padding: 16px 20px;
+  }
+  .company-name {
+    font-size: 28px;
+  }
+  .action-value {
+    font-size: 12px;
+  }
+  .action-btn {
+    padding: 14px 16px;
+    min-height: 60px;
+  }
+}
