@@ -404,6 +404,20 @@ body {
   color: var(--cyan);
 }
 
+.action-btn.save-contact:hover {
+  background: rgba(184, 164, 255, 0.06);
+  border-color: rgba(184, 164, 255, 0.3);
+}
+
+.action-btn.save-contact .action-icon {
+  background: rgba(184, 164, 255, 0.08);
+  border-color: rgba(184, 164, 255, 0.2);
+}
+
+.action-btn.save-contact .action-value {
+  color: var(--purple);
+}
+
 .footer {
   margin-top: 20px;
   font-size: 9px;

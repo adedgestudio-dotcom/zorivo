@@ -24,6 +24,31 @@ export default function Home() {
       });
   };
 
+  const saveContact = async () => {
+    const vcardUrl = "/api/contact";
+
+    // Try native share API first (works well on mobile)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Sarrah Bharmal - Zorivo",
+          text: "Save my contact",
+          url: window.location.origin + vcardUrl,
+        });
+        return;
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          console.log("Share failed, using fallback");
+        } else {
+          return; // User cancelled
+        }
+      }
+    }
+
+    // Fallback: direct download
+    window.open(vcardUrl, "_self");
+  };
+
   return (
     <>
       <div className="bg-glow"></div>
@@ -267,6 +292,50 @@ export default function Home() {
                 />
               </svg>
             </a>
+
+            {/* Save to Contacts */}
+            <button
+              className="action-btn save-contact"
+              onClick={saveContact}
+              style={{ width: "100%" }}
+            >
+              <div className="action-icon">
+                <svg viewBox="0 0 18 18" fill="none">
+                  <path
+                    d="M9 2v10m0 0L6 9m3 3l3-3"
+                    stroke="#b8a4ff"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M3 12v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"
+                    stroke="#b8a4ff"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+              <div className="action-info">
+                <div className="action-label">Save Contact</div>
+                <div className="action-value">Add to your contacts</div>
+              </div>
+              <svg
+                className="action-arrow"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <path
+                  d="M3 11L11 3M11 3H5M11 3v6"
+                  stroke="#b8a4ff"
+                  strokeWidth="1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
         </div>
 
