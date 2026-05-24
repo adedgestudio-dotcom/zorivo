@@ -15,7 +15,7 @@ export async function GET() {
   return new Response(vcard, {
     headers: {
       "Content-Type": "text/vcard; charset=utf-8",
-      "Content-Disposition": 'attachment; filename="Sarrah_Bharmal.vcf"',
+      "Content-Disposition": 'inline; filename="Sarrah_Bharmal.vcf"',
       "Cache-Control": "no-store",
     },
   });

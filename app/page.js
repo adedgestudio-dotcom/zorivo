@@ -24,37 +24,9 @@ export default function Home() {
       });
   };
 
-  const saveContact = async () => {
-    try {
-      // Fetch the vCard data
-      const response = await fetch("/api/contact");
-      const blob = await response.blob();
-      const file = new File([blob], "Sarrah_Bharmal.vcf", {
-        type: "text/vcard",
-      });
-
-      // Try Web Share API with file (works on mobile to open contacts directly)
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: "Sarrah Bharmal - Zorivo",
-          text: "Save my contact",
-        });
-        return;
-      }
-
-      // Fallback: create download link
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Sarrah_Bharmal.vcf";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      console.log("Error saving contact:", err);
-    }
+  const saveContact = () => {
+    // Simple direct download - works on all devices
+    window.location.href = "/api/contact";
   };
 
   return (
