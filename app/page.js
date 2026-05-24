@@ -67,57 +67,6 @@ export default function Home() {
 
           {/* Contacts */}
           <div className="contacts">
-            {/* Save Contact */}
-            <a
-              className="action-btn"
-              href="/api/contact"
-              style={{ width: "100%", textDecoration: "none" }}
-            >
-              <div className="action-icon">
-                <svg viewBox="0 0 18 18" fill="none">
-                  <circle
-                    cx="9"
-                    cy="5"
-                    r="2.5"
-                    stroke="#47ffe8"
-                    strokeWidth="1.3"
-                  />
-                  <path
-                    d="M4 15c0-2.8 2.2-5 5-5s5 2.2 5 5"
-                    stroke="#47ffe8"
-                    strokeWidth="1.3"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M13 7l2 2-2 2"
-                    stroke="#47ffe8"
-                    strokeWidth="1.3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div className="action-info">
-                <div className="action-label">Save to Contacts</div>
-                <div className="action-value">Add to Contacts</div>
-              </div>
-              <svg
-                className="action-arrow"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <path
-                  d="M3 7h8M7 3l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-
             {/* Phone */}
             <div className="contact-row">
               <a className="action-btn has-copy" href="tel:+919940611281">
@@ -274,7 +223,7 @@ export default function Home() {
             {/* Portfolio */}
             <a
               className="action-btn portfolio"
-              href="https://portfolio-zorivo.vercel.app/"
+              href="https://zorivo.in"
               target="_blank"
               rel="noopener"
               style={{ width: "100%" }}
@@ -300,7 +249,7 @@ export default function Home() {
               </div>
               <div className="action-info">
                 <div className="action-label">Portfolio</div>
-                <div className="action-value">portfolio-zorivo.vercel.app</div>
+                <div className="action-value">zorivo.in</div>
               </div>
               <svg
                 className="action-arrow"

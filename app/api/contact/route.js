@@ -8,14 +8,14 @@ export async function GET() {
     "TITLE:Founder & Developer",
     "TEL;TYPE=CELL:+919940611281",
     "EMAIL:zorivoworks@gmail.com",
-    "URL:https://portfolio-zorivo.vercel.app/",
+    "URL:https://zorivo.in",
     "END:VCARD",
   ].join("\r\n");
 
   return new Response(vcard, {
     headers: {
-      "Content-Type": "text/x-vcard; charset=utf-8",
-      "Content-Disposition": "inline",
+      "Content-Type": "text/vcard; charset=utf-8",
+      "Content-Disposition": 'attachment; filename="Sarrah_Bharmal.vcf"',
       "Cache-Control": "no-store",
     },
   });
