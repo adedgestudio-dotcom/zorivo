@@ -24,9 +24,36 @@ export default function Home() {
       });
   };
 
-  const saveContact = () => {
-    // Simple direct download - works on all devices
-    window.location.href = "/api/contact";
+  const saveContact = async () => {
+    try {
+      // Fetch the vCard data
+      const response = await fetch("/api/contact");
+      const blob = await response.blob();
+
+      // Try to use Web Share API (mobile)
+      if (navigator.share) {
+        const file = new File([blob], "Sarrah_Bharmal.vcf", {
+          type: "text/vcard",
+        });
+
+        // Check if we can share files
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: "Save Contact - Sarrah Bharmal",
+          });
+          return;
+        }
+      }
+
+      // Fallback: direct link (will download on most devices)
+      window.location.href = "/api/contact";
+    } catch (err) {
+      // If share was cancelled or failed, do nothing
+      if (err.name !== "AbortError") {
+        window.location.href = "/api/contact";
+      }
+    }
   };
 
   return (
